@@ -4,9 +4,15 @@ namespace App\Domains\Announcement\Models;
 
 use App\Domains\Announcement\Models\Traits\Scope\AnnouncementScope;
 use Database\Factories\AnnouncementFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
+
+use Illuminate\Database\Eloquent\{
+    Factories\HasFactory,
+    Model
+};
+use Spatie\Activitylog\{
+    Traits\LogsActivity,
+    LogOptions
+};
 
 /**
  * Class Announcement.
@@ -49,6 +55,11 @@ class Announcement extends Model
     protected $casts = [
         'enabled' => 'boolean',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 
     /**
      * Create a new factory instance for the model.
