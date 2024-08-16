@@ -1,5 +1,7 @@
-window._ = require('lodash');
-window.Swal = require('sweetalert2');
+import _ from 'lodash';
+window._ = _;
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -20,7 +22,8 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+import axios from 'axios';
+window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -36,7 +39,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     key: import.meta.env.VITE_PUSHER_APP_KEY,
+//     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
