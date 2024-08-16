@@ -1,10 +1,11 @@
 import 'alpinejs'
 
 window.$ = window.jQuery = require('jquery');
-window.Swal = require('sweetalert2');
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 
 // CoreUI
-require('@coreui/coreui');
+import '@coreui/coreui';
 
 // Boilerplate
-require('../plugins');
+import '../plugins';
