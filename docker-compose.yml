@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  app:
+    container_name: laravel-boilerplate-twill-app-dev
+    environment:
+    - COMPOSER_MEMORY_LIMIT=-1
+    image: ejklock/php-fpm:8.1
+    networks:
+    - laravel-boilerplate-twillNetwork
+    restart: unless-stopped
+    volumes:
+    - ./:/var/www/app
+    - ./docker-compose/php-fpm/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    working_dir: /var/www/app
+  db:
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: laravel-boilerplate-twill-dev-db
+    environment:
+      MYSQL_DATABASE: laravel-boilerplate-twill
+      MYSQL_PASSWORD: laravel-boilerplate-twill
+      MYSQL_ROOT_PASSWORD: laravel-boilerplate-twill
+      MYSQL_USER: laravel-boilerplate-twill
+      SERVICE_NAME: mysql
+      SERVICE_TAGS: dev
+    image: mysql:5.7
+    networks:
+    - laravel-boilerplate-twillNetwork
+    ports:
+    - 33306:3306
+    restart: unless-stopped
+    tty: true
+    volumes:
+    - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    - laravel-boilerplate-twillMysqlData:/var/lib/mysql
+  nginx:
+    container_name: laravel-boilerplate-twill-dev-nginx
+    image: nginx:alpine
+    networks:
+    - laravel-boilerplate-twillNetwork
+    ports:
+    - 8000:80
+    restart: unless-stopped
+    volumes:
+    - ./:/var/www/app
+    - ./docker-compose/nginx:/etc/nginx/conf.d/
+    working_dir: /var/www/app
+networks:
+  laravel-boilerplate-twillNetwork:
+    driver: bridge
+volumes:
+  laravel-boilerplate-twillMysqlData:
+    driver: local
+    name: laravel-boilerplate-twillMysqlData
