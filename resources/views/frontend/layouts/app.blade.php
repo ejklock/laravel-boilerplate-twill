@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ htmlLang() }}" @langrtl dir="rtl" @endlangrtl>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +13,11 @@
     @stack('before-styles')
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    @vite('resources/css/frontend.css')
+    @vite('resources/sass/frontend/app.scss')
     <livewire:styles />
     @stack('after-styles')
 </head>
+
 <body>
     @include('includes.partials.read-only')
     @include('includes.partials.logged-in-as')
@@ -31,10 +33,9 @@
     </div><!--app-->
 
     @stack('before-scripts')
-    @vite('resources/js/manifest.js')
-    @vite('resources/js/vendor.js')
-    @vite('resources/js/frontend.js')
+    @vite('resources/js/frontend/app.js')
     <livewire:scripts />
     @stack('after-scripts')
 </body>
+
 </html>

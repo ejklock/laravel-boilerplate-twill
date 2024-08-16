@@ -1,11 +1,6 @@
-import 'alpinejs'
-
-window.$ = window.jQuery = require('jquery');
-import Swal from 'sweetalert2';
-window.Swal = Swal;
+import "alpinejs";
+import "../bootstrap";
+import "../plugins";
 
 // CoreUI
-import '@coreui/coreui';
-
-// Boilerplate
-import '../plugins';
+import "@coreui/coreui";

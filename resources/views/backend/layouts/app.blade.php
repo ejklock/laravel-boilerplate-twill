@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ htmlLang() }}" @langrtl dir="rtl" @endlangrtl>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,10 +11,11 @@
     @yield('meta')
 
     @stack('before-styles')
-    @vite('resources/css/backend.css')
+    @vite('resources/sass/backend/app.scss')
     <livewire:styles />
     @stack('after-styles')
 </head>
+
 <body class="c-app">
     @include('backend.includes.sidebar')
 
@@ -38,10 +40,9 @@
     </div><!--c-wrapper-->
 
     @stack('before-scripts')
-    @vite('resources/js/manifest.js')
-    @vite('resources/js/vendor.js')
-    @vite('resources/js/backend.js')
+    @vite('resources/js/backend/app.js')
     <livewire:scripts />
     @stack('after-scripts')
 </body>
+
 </html>
